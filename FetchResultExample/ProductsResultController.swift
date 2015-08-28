@@ -9,17 +9,7 @@
 import Foundation
 import CoreData
 
-class ProductResultController: NSFetchedResultsControllerDelegate {
-    
-
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        println("controllerWillChangeContent")
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        println("didChangeSection")
-    }
-
+class ProductResultController: NSFetchedResultsController {
     
     
 }

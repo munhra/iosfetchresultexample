@@ -21,13 +21,8 @@ class ProductViewController:UIViewController {
         println("save product")
         product?.prodDescription = prodDescription.text
         //product?.prodQtd = prodQuantity.text.toInt()!
-        
-        
         //product?.prodQtd = "\(prodQuantity.text)"
-        
         productDao.save()
-        
-        
     }
 
 }

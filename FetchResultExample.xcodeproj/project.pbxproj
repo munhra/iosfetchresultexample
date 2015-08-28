@@ -14,7 +14,7 @@
 		B2701B0E1B8E45B800A267E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2701B0C1B8E45B800A267E3 /* LaunchScreen.xib */; };
 		B2701B1A1B8E45B800A267E3 /* FetchResultExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B191B8E45B800A267E3 /* FetchResultExampleTests.swift */; };
 		B2701B271B8E486800A267E3 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B261B8E486800A267E3 /* Products.swift */; };
-		B2701B291B8E497400A267E3 /* FetchControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B281B8E497400A267E3 /* FetchControllerDelegate.swift */; };
+		B2701B291B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B281B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift */; };
 		B2701B2B1B8E4A2600A267E3 /* ProductsDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B2A1B8E4A2600A267E3 /* ProductsDao.swift */; };
 		B2701B2D1B8E4C2500A267E3 /* ProductsResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B2C1B8E4C2500A267E3 /* ProductsResultController.swift */; };
 		B2701B2F1B8E4E0E00A267E3 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B2E1B8E4E0E00A267E3 /* ProductListViewController.swift */; };
@@ -43,7 +43,7 @@
 		B2701B181B8E45B800A267E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2701B191B8E45B800A267E3 /* FetchResultExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResultExampleTests.swift; sourceTree = "<group>"; };
 		B2701B261B8E486800A267E3 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
-		B2701B281B8E497400A267E3 /* FetchControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchControllerDelegate.swift; sourceTree = "<group>"; };
+		B2701B281B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductResultFetchControllerDelegate.swift; sourceTree = "<group>"; };
 		B2701B2A1B8E4A2600A267E3 /* ProductsDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsDao.swift; sourceTree = "<group>"; };
 		B2701B2C1B8E4C2500A267E3 /* ProductsResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsResultController.swift; sourceTree = "<group>"; };
 		B2701B2E1B8E4E0E00A267E3 /* ProductListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				B2701B261B8E486800A267E3 /* Products.swift */,
-				B2701B281B8E497400A267E3 /* FetchControllerDelegate.swift */,
+				B2701B281B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift */,
 				B2701B2A1B8E4A2600A267E3 /* ProductsDao.swift */,
 				B2701B2C1B8E4C2500A267E3 /* ProductsResultController.swift */,
 			);
@@ -257,7 +257,7 @@
 				B2701B2B1B8E4A2600A267E3 /* ProductsDao.swift in Sources */,
 				B2701B271B8E486800A267E3 /* Products.swift in Sources */,
 				B2701B2D1B8E4C2500A267E3 /* ProductsResultController.swift in Sources */,
-				B2701B291B8E497400A267E3 /* FetchControllerDelegate.swift in Sources */,
+				B2701B291B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift in Sources */,
 				B2701B041B8E45B800A267E3 /* FetchResultExample.xcdatamodeld in Sources */,
 				B2701B2F1B8E4E0E00A267E3 /* ProductListViewController.swift in Sources */,
 				B2701B311B8F2F1C00A267E3 /* ProductViewController.swift in Sources */,
@@ -461,6 +461,7 @@
 				B2701B1F1B8E45B800A267E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2701B201B8E45B800A267E3 /* Build configuration list for PBXNativeTarget "FetchResultExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +470,7 @@
 				B2701B221B8E45B800A267E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
