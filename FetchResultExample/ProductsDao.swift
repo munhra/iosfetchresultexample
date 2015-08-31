@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class ProductsDao {
     
@@ -23,6 +24,8 @@ class ProductsDao {
         let store = psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: nil)
         
         var managedObjectContext = NSManagedObjectContext()
+
+
         managedObjectContext.persistentStoreCoordinator = psc
         
         return managedObjectContext
@@ -38,6 +41,15 @@ class ProductsDao {
         let moc = self.managedObjectContext
         moc.deleteObject(object)
         save()
+    }
+    
+    func fetchAllManagedObjects(name:String) -> [AnyObject]!{
+        let moc = self.managedObjectContext
+        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: moc)
+        let request = NSFetchRequest()
+        request.entity = entity
+        
+        return moc.executeFetchRequest(request, error: nil)
     }
     
     func managedObjectsForName(name: String, predicate: NSPredicate, sortDescriptors: [NSSortDescriptor]) -> [AnyObject]! {

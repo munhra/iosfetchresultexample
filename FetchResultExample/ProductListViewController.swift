@@ -12,6 +12,7 @@ import CoreData
 
 class ProductListViewController: UIViewController {
 
+    @IBOutlet weak var productTableView: UITableView!
     let productDao = ProductsDao()
     
     private lazy var productResultsController:NSFetchedResultsController = {
@@ -26,10 +27,17 @@ class ProductListViewController: UIViewController {
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
 
         controller.delegate = self
+        controller.performFetch(nil)
         
         return controller
         
     }()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let productsCount = productDao.fetchAllManagedObjects("Products")!.count
+        println("Stored products \(productsCount)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +50,7 @@ class ProductListViewController: UIViewController {
         if sender is UIBarButtonItem {
             println("Add Product Form")
             let productViewController = segue.destinationViewController as? ProductViewController
-            productViewController?.product = productDao.createManagedObject() as? Products
+            //productViewController?.product = productDao.createManagedObject() as? Products
         }else{
             println("View product details")
         }
@@ -55,14 +63,35 @@ extension ProductListViewController:NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         println("controllerWillChangeContent")
+        self.productTableView.beginUpdates()
+
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         println("didChangeSection")
+        
+        switch type {
+            
+            
+        case .Insert:
+            println("Insert")
+        case .Delete:
+            println("Delete")
+        case .Move:
+            println("Move")
+        case .Update:
+            println("Update")
+            
+        }
+        
+        
+        
+        
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         println("controllerDidChangeContent")
+        self.productTableView.endUpdates()
     }
 
 }
@@ -76,7 +105,19 @@ extension ProductListViewController:UITableViewDelegate {
 extension ProductListViewController:UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("productcell", forIndexPath: indexPath) as! UITableViewCell
+        
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("productcell", forIndexPath: indexPath) as! UITableViewCell
+        
+        
+        if indexPath.row > 0 {
+            if let fetchedProduct:Products = (self.productResultsController.objectAtIndexPath(indexPath) as? Products) {
+                cell.textLabel?.text = fetchedProduct.description
+            }
+        }
+        
+    
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
