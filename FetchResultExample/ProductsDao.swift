@@ -13,23 +13,12 @@ import UIKit
 class ProductsDao {
     
     lazy var managedObjectContext: NSManagedObjectContext = {
-   
-        var modelName = "FetchResultExample"
-        let modelURL = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd")
-        let mom = NSManagedObjectModel(contentsOfURL: modelURL!)
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom!)
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        let storeURL = (urls[urls.endIndex - 1]).URLByAppendingPathComponent("\(modelName).sqlite")
-        let options = [ NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true ]
-        let store = psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options, error: nil)
-        
-        var managedObjectContext = NSManagedObjectContext()
-
-
-        managedObjectContext.persistentStoreCoordinator = psc
-        
-        return managedObjectContext
-        }()
+       
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+    
+        return managedContext
+    }()
     
     
     func createManagedObject() -> NSManagedObject {
@@ -47,6 +36,7 @@ class ProductsDao {
         let moc = self.managedObjectContext
         let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: moc)
         let request = NSFetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "prodDescription", ascending: false)]
         request.entity = entity
         
         return moc.executeFetchRequest(request, error: nil)

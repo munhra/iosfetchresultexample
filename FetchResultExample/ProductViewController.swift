@@ -20,31 +20,13 @@ class ProductViewController:UIViewController {
 
     @IBAction func saveProduct(sender: UIButton) {
         println("save product")
-        //product?.prodDescription = prodDescription.text
-        //product?.prodQtd = prodQuantity.text.toInt()!
-        //product?.prodQtd = "\(prodQuantity.text)"
-        //productDao.save()
-        saveProduct(prodQuantity.text, prodQtd: prodQuantity.text)
+        self.product = productDao.createManagedObject() as? Products
+
+        
+        product?.prodDescription = prodDescription.text
+        product?.prodQtd = prodQuantity.text.toInt()!
+        productDao.save()
+
     }
     
-    func saveProduct(prodDescription:String, prodQtd:String){
-        
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let entity = NSEntityDescription.entityForName("Products", inManagedObjectContext: managedContext)
-        let product = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext) as? Products
-        
-        product?.prodDescription = prodDescription
-        product?.prodQtd = prodQtd.toInt()!
-        
-        var error:NSError?
-        if !managedContext.save(&error){
-            println("Could not save error \(error)")
-        }
-        
-        
-        
-    }
-
 }
