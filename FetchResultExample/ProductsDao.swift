@@ -20,7 +20,6 @@ class ProductsDao {
         return managedContext
     }()
     
-    
     func createManagedObject() -> NSManagedObject {
         let moc = self.managedObjectContext
         return NSEntityDescription.insertNewObjectForEntityForName("Products", inManagedObjectContext: moc) as! NSManagedObject

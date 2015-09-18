@@ -20,13 +20,27 @@ class ProductViewController:UIViewController {
 
     @IBAction func saveProduct(sender: UIButton) {
         println("save product")
-        self.product = productDao.createManagedObject() as? Products
-
+        
+        if product == nil {
+            self.product = productDao.createManagedObject() as? Products
+        }
         
         product?.prodDescription = prodDescription.text
         product?.prodQtd = prodQuantity.text.toInt()!
+        
         productDao.save()
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if product != nil {
+            prodDescription.text = product?.prodDescription
+            prodQuantity.text = product?.prodQtd.stringValue
+        }
+    }
+    
+    deinit{
+        println("ProductViewController Deinit")
     }
     
 }

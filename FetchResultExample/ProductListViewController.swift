@@ -18,7 +18,6 @@
     https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/doc/uid/TP40006938
 */
 
-
 import Foundation
 import UIKit
 import CoreData
@@ -48,43 +47,23 @@ class ProductListViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-        let productsCount = productDao.fetchAllManagedObjects("Products")!.count
-        println("Stored products \(productsCount)")
-        
-        var error: NSError?
-        self.productResultsController.performFetch(&error)
-        
-        if error != nil {
-            println("Fetch error")
-        }
-        
+        self.productResultsController.performFetch(nil)
         self.productTableView.reloadData();
-        
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        var error: NSError?
-        self.productResultsController.performFetch(&error)
-        
-        if error != nil {
-            println("Fetch error")
-        }
-    }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if sender is UIBarButtonItem {
-            println("Add Product Form")
+        if sender is ProductViewCell {
+            println("It is a ProductViewCell")
+            let productViewCell = sender as? ProductViewCell
             let productViewController = segue.destinationViewController as? ProductViewController
-        }else{
-            println("View product details")
+            productViewController?.product = productViewCell?.product
         }
-        
     }
     
+    @IBAction func saveProductUnwid(segue:UIStoryboardSegue) {
+        // this unwind tecnic is used to avoid productviewcontroller to leak
+        println("unwind from details ")
+    }
 }
 
 extension ProductListViewController:NSFetchedResultsControllerDelegate {
@@ -92,43 +71,25 @@ extension ProductListViewController:NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         println("controllerWillChangeContent")
         self.productTableView.beginUpdates()
-        
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         println("DidChangeObject");
-        
         switch type {
-            
+        
         case .Insert:
             println("Insert")
             self.productTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
-            
         case .Delete:
             println("Delete")
+            self.productTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
         case .Move:
             println("Move")
         case .Update:
             println("Update")
-            
-        }
-        
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
-        switch type{
-            
-        case .Insert:
-            println("Insert section")
-        case .Delete:
-            println("Delete section")
-        default:
-            println("default")
-            
         }
     }
-    
+
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         println("controllerDidChangeContent")
         self.productTableView.endUpdates()
@@ -139,23 +100,24 @@ extension ProductListViewController:NSFetchedResultsControllerDelegate {
 
 extension ProductListViewController:UITableViewDelegate {
     
-    
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         println("editActionsForRowAtIndexPath")
         return nil;
     }
-    
-   
-
 }
 
 extension ProductListViewController:UITableViewDataSource {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         println("commitEditingStyle")
+        if editingStyle == .Delete {
+            if let product:Products = productResultsController.objectAtIndexPath(indexPath) as? Products {
+                productDao.deleteManagedObject(product);
+            }
+        }
     }
     
-    // For the delete button to appear autolayout is required !
+    // For the delete button to appear autolayout is required ! It take me 1 hours to fix
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         println("editingStyleForRowAtIndexPath")
         return UITableViewCellEditingStyle.Delete
@@ -166,16 +128,15 @@ extension ProductListViewController:UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        println("Fetched items \(productResultsController.fetchedObjects!.count)")
         // for the productResultsController.objectAtIndexPath(indexPath) to be casted to Product, file FetchResulExample.xcdatamodeld shall 
-        // be edited and the class value changed to FetchResultExample.Products
-        let cell = tableView.dequeueReusableCellWithIdentifier("productcell", forIndexPath: indexPath) as! UITableViewCell
+        // be edited and the class value changed to FetchResultExample.Products, it took me 2 hours to fix
+        let cell = tableView.dequeueReusableCellWithIdentifier("productcell", forIndexPath: indexPath) as! ProductViewCell
         
         if let fetchedProduct:Products = (productResultsController.objectAtIndexPath(indexPath) as? Products) {
-                cell.textLabel?.text = fetchedProduct.prodDescription
+            cell.textLabel?.text = fetchedProduct.prodDescription
+            cell.product = fetchedProduct
         }
-    
+        
         return cell
     }
     

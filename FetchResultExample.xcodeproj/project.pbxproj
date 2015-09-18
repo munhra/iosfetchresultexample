@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2244DD21BAC32ED00C93CD3 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2244DD11BAC32ED00C93CD3 /* UITableViewCellExtension.swift */; };
 		B2701B011B8E45B800A267E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B001B8E45B800A267E3 /* AppDelegate.swift */; };
 		B2701B041B8E45B800A267E3 /* FetchResultExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2701B021B8E45B800A267E3 /* FetchResultExample.xcdatamodeld */; };
 		B2701B091B8E45B800A267E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2701B071B8E45B800A267E3 /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		B2701B271B8E486800A267E3 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B261B8E486800A267E3 /* Products.swift */; };
 		B2701B291B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B281B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift */; };
 		B2701B2B1B8E4A2600A267E3 /* ProductsDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B2A1B8E4A2600A267E3 /* ProductsDao.swift */; };
-		B2701B2D1B8E4C2500A267E3 /* ProductsResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B2C1B8E4C2500A267E3 /* ProductsResultController.swift */; };
 		B2701B2F1B8E4E0E00A267E3 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B2E1B8E4E0E00A267E3 /* ProductListViewController.swift */; };
 		B2701B311B8F2F1C00A267E3 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B301B8F2F1C00A267E3 /* ProductViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B2244DD11BAC32ED00C93CD3 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		B2701AFB1B8E45B800A267E3 /* FetchResultExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchResultExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2701AFF1B8E45B800A267E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2701B001B8E45B800A267E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		B2701B261B8E486800A267E3 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		B2701B281B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductResultFetchControllerDelegate.swift; sourceTree = "<group>"; };
 		B2701B2A1B8E4A2600A267E3 /* ProductsDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsDao.swift; sourceTree = "<group>"; };
-		B2701B2C1B8E4C2500A267E3 /* ProductsResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsResultController.swift; sourceTree = "<group>"; };
 		B2701B2E1B8E4E0E00A267E3 /* ProductListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		B2701B301B8F2F1C00A267E3 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +131,6 @@
 				B2701B261B8E486800A267E3 /* Products.swift */,
 				B2701B281B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift */,
 				B2701B2A1B8E4A2600A267E3 /* ProductsDao.swift */,
-				B2701B2C1B8E4C2500A267E3 /* ProductsResultController.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -141,6 +140,7 @@
 			children = (
 				B2701B2E1B8E4E0E00A267E3 /* ProductListViewController.swift */,
 				B2701B301B8F2F1C00A267E3 /* ProductViewController.swift */,
+				B2244DD11BAC32ED00C93CD3 /* UITableViewCellExtension.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,12 +256,12 @@
 			files = (
 				B2701B2B1B8E4A2600A267E3 /* ProductsDao.swift in Sources */,
 				B2701B271B8E486800A267E3 /* Products.swift in Sources */,
-				B2701B2D1B8E4C2500A267E3 /* ProductsResultController.swift in Sources */,
 				B2701B291B8E497400A267E3 /* ProductResultFetchControllerDelegate.swift in Sources */,
 				B2701B041B8E45B800A267E3 /* FetchResultExample.xcdatamodeld in Sources */,
 				B2701B2F1B8E4E0E00A267E3 /* ProductListViewController.swift in Sources */,
 				B2701B311B8F2F1C00A267E3 /* ProductViewController.swift in Sources */,
 				B2701B011B8E45B800A267E3 /* AppDelegate.swift in Sources */,
+				B2244DD21BAC32ED00C93CD3 /* UITableViewCellExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
