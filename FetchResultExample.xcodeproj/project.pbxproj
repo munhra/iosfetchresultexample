@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B2244DD21BAC32ED00C93CD3 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2244DD11BAC32ED00C93CD3 /* UITableViewCellExtension.swift */; };
+		B2244DD21BAC32ED00C93CD3 /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2244DD11BAC32ED00C93CD3 /* ProductViewCell.swift */; };
 		B2701B011B8E45B800A267E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2701B001B8E45B800A267E3 /* AppDelegate.swift */; };
 		B2701B041B8E45B800A267E3 /* FetchResultExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2701B021B8E45B800A267E3 /* FetchResultExample.xcdatamodeld */; };
 		B2701B091B8E45B800A267E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2701B071B8E45B800A267E3 /* Main.storyboard */; };
@@ -32,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B2244DD11BAC32ED00C93CD3 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		B2244DD11BAC32ED00C93CD3 /* ProductViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
 		B2701AFB1B8E45B800A267E3 /* FetchResultExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchResultExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2701AFF1B8E45B800A267E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2701B001B8E45B800A267E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			children = (
 				B2701B2E1B8E4E0E00A267E3 /* ProductListViewController.swift */,
 				B2701B301B8F2F1C00A267E3 /* ProductViewController.swift */,
-				B2244DD11BAC32ED00C93CD3 /* UITableViewCellExtension.swift */,
+				B2244DD11BAC32ED00C93CD3 /* ProductViewCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -261,7 +261,7 @@
 				B2701B2F1B8E4E0E00A267E3 /* ProductListViewController.swift in Sources */,
 				B2701B311B8F2F1C00A267E3 /* ProductViewController.swift in Sources */,
 				B2701B011B8E45B800A267E3 /* AppDelegate.swift in Sources */,
-				B2244DD21BAC32ED00C93CD3 /* UITableViewCellExtension.swift in Sources */,
+				B2244DD21BAC32ED00C93CD3 /* ProductViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
