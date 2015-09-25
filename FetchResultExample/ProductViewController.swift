@@ -16,18 +16,15 @@ class ProductViewController:UIViewController {
     @IBOutlet weak var prodDescription: UITextField!
     @IBOutlet weak var prodQuantity: UITextField!
     var product:Products?
+    var myProdDescription:String?
+    var myProdQtd:String?
+
     let productDao = ProductsDao()
 
     @IBAction func saveProduct(sender: UIButton) {
         println("save product")
-        
-        if product == nil {
-            self.product = productDao.createManagedObject() as? Products
-        }
-        
-        product?.prodDescription = prodDescription.text
+        product?.prodDescription = myProdDescription!
         product?.prodQtd = prodQuantity.text.toInt()!
-        
         productDao.save()
     }
     
@@ -36,6 +33,8 @@ class ProductViewController:UIViewController {
         if product != nil {
             prodDescription.text = product?.prodDescription
             prodQuantity.text = product?.prodQtd.stringValue
+            myProdDescription = product?.prodDescription
+            myProdQtd = product?.prodQtd.stringValue
         }
     }
     
