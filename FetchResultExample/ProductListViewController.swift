@@ -79,7 +79,7 @@ extension ProductListViewController:NSFetchedResultsControllerDelegate {
         
         case .Insert:
             println("Insert")
-            self.productTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+            //self.productTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
         case .Delete:
             println("Delete")
             self.productTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
