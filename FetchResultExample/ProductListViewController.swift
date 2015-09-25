@@ -87,6 +87,7 @@ extension ProductListViewController:NSFetchedResultsControllerDelegate {
             println("Move")
         case .Update:
             println("Update")
+
         }
     }
 

@@ -13,4 +13,9 @@ class ProductViewCell: UITableViewCell {
     
     var product:Products?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = UIColor.purpleColor()
+    }
+    
 }
