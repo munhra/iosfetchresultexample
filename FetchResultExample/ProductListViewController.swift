@@ -133,7 +133,7 @@ extension ProductListViewController:UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("productcell", forIndexPath: indexPath) as! ProductViewCell
         
         if let fetchedProduct:Products = (productResultsController.objectAtIndexPath(indexPath) as? Products) {
-            cell.textLabel?.text = fetchedProduct.prodDescription
+            cell.textLabel?.text = "EGG"
             cell.product = fetchedProduct
         }
         
